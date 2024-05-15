@@ -154,11 +154,6 @@ class Node {
     this.next = null;
   }
 
-  method() {
-    const testformatting = ""
-
-
-  }
 }
 
 const list = new LinkedList();
