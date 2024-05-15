@@ -102,9 +102,24 @@ class LinkedList {
     let node = this.root;
     while (node) {
       if (node.value === value) return true;
-      node = node.next
+      node = node.next;
     }
   }
+
+  // returns the index of the node containing value, or null if not found
+  find(value) {
+    if (!this.root) return false;
+    let node = this.root;
+    let i = 0;
+    while (node) {
+      if (node.value === value) return i;
+      i++;
+      node = node.next;
+    }
+    return null;
+  }
+
+
 }
 class Node {
   constructor(value) {
@@ -117,6 +132,6 @@ const list = new LinkedList();
 list.append("a");
 list.append("b");
 list.append("c");
-console.log(`list ${list.contains('a') ? 'contains' : 'does not contain'} a`);
-console.log(`list ${list.contains('b') ? 'contains' : 'does not contain'} b`);
-console.log(`list ${list.contains('x') ? 'contains' : 'does not contain'} x`);
+console.log(list.find('a'))
+console.log(list.find('b'))
+console.log(list.find('x'))
