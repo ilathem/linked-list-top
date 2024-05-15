@@ -155,7 +155,9 @@ class Node {
   }
 
   method() {
-    const testformatting = ""
+    const testformatting = "";
+
+
   }
 }
 
