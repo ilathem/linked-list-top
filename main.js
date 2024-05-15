@@ -122,7 +122,7 @@ class LinkedList {
   // provided value at the given index.
   insertAt(value, index) {
     if (index < 0) {
-      console.error("Cannot inset at negative indices");
+      console.error("Cannot insert at negative indices");
       return false;
     }
     if (index === 0) {
@@ -150,6 +150,35 @@ class LinkedList {
       return false;
     }
   }
+
+  removeAt(index) {
+    if (index < 0) {
+      console.error("Cannot remove at negative indices");
+      return null;
+    }
+    if (index === 0) {
+      if (!this.root) {
+        console.error('Cannot remove that which is empty');
+        return null;
+      }
+      const removedNode = this.root;
+      this.root = this.root.next;
+      return removedNode;
+    }
+    let i = 1;
+    let node = this.root;
+    while (node.next) {
+      if (index === i) {
+        const removedNode = node.next;
+        node.next = removedNode.next;
+        return removedNode;
+      }
+      node = node.next;
+      i++;
+    }
+    console.error("Cannot remove past list bounds");
+    return null;
+  }
 }
 
 class Node {
@@ -169,42 +198,42 @@ const createAList = () => {
 
 let list = createAList();
 console.log("");
-console.log("inserting x at 0");
+console.log("removing from 0");
 list.toString();
-list.insertAt("x", 0);
-list.toString();
-
-list = createAList();
-console.log("");
-console.log("inserting x at 1");
-list.toString();
-list.insertAt("x", 1);
+console.log(list.removeAt(0));
 list.toString();
 
 list = createAList();
 console.log("");
-console.log("inserting x at 2");
+console.log("removing from 1");
 list.toString();
-list.insertAt("x", 2);
-list.toString();
-
-list = createAList();
-console.log("");
-console.log("inserting x at 3");
-list.toString();
-list.insertAt("x", 3);
+console.log(list.removeAt(1));
 list.toString();
 
 list = createAList();
 console.log("");
-console.log("inserting x at 4");
+console.log("removing from 2");
 list.toString();
-list.insertAt("x", 4);
+console.log(list.removeAt(2));
 list.toString();
 
 list = createAList();
 console.log("");
-console.log("inserting x at -1");
+console.log("removing from 3");
 list.toString();
-list.insertAt("x", -1);
+console.log(list.removeAt(3));
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("removing from 4");
+list.toString();
+console.log(list.removeAt(4));
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("removing from -1");
+list.toString();
+console.log(list.removeAt(-1));
 list.toString();
