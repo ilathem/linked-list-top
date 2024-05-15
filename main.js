@@ -36,6 +36,18 @@ class LinkedList {
       this.root.next = node;
     } 
   }
+  size() {
+    if (this.root === null) return 0;
+    else {
+      let size = 0;
+      let node = this.root
+      while (node) {
+        size++
+        node = node.next;
+      }
+      return size;
+    }
+  }
 }
 class Node {
   constructor(value) {
@@ -45,8 +57,11 @@ class Node {
 }
 
 const list = new LinkedList();
+console.log(list.size());
 list.append('a');
+console.log(list.size());
 list.append('b');
 list.append('c');
 list.prepend('d');
 list.toString();
+console.log(list.size());
