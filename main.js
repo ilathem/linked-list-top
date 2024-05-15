@@ -51,6 +51,14 @@ class LinkedList {
   head() {
     return this.root;
   }
+  tail() {
+    let node = this.root;
+    if (!node) return null;
+    while (node.next) {
+      node = node.next;
+    }
+    return node;
+  }
 }
 class Node {
   constructor(value) {
@@ -60,9 +68,10 @@ class Node {
 }
 
 const list = new LinkedList();
-console.log(list.head());
+console.log(list.tail());
 list.append('a');
+console.log(list.tail());
 list.append('b');
 list.append('c');
 list.toString();
-console.log(list.head());
+console.log(list.tail());
