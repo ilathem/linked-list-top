@@ -3,11 +3,11 @@ class LinkedList {
     this.root = null;
   }
   toString() {
-    let string = ` ( ${this.root?.value ?? 'null'} )`;
+    let string = ` ( ${this.root?.value ?? "null"} )`;
     let node = this.root;
     while (node) {
-      string += ` -> ( ${node.next?.value ?? 'null'} )`; // optional chaining!
-      node = node.next
+      string += ` -> ( ${node.next?.value ?? "null"} )`; // optional chaining!
+      node = node.next;
     }
     console.log(string);
   }
@@ -18,8 +18,7 @@ class LinkedList {
     } else {
       let node = this.root;
       while (node) {
-        if (node.next) 
-          node = node.next;
+        if (node.next) node = node.next;
         else {
           node.next = new Node(value);
           return;
@@ -32,17 +31,17 @@ class LinkedList {
       this.root = new Node(value);
     } else {
       let node = this.root;
-      this.root = new Node(value)
+      this.root = new Node(value);
       this.root.next = node;
-    } 
+    }
   }
   size() {
     if (this.root === null) return 0;
     else {
       let size = 0;
-      let node = this.root
+      let node = this.root;
       while (node) {
-        size++
+        size++;
         node = node.next;
       }
       return size;
@@ -59,6 +58,19 @@ class LinkedList {
     }
     return node;
   }
+  at(index) {
+    if (index < 0) return null;
+    let i = 0;
+    let node = this.root;
+    while (node) {
+      if (index === i) {
+        return node;
+      }
+      node = node.next;
+      i++;
+    }
+    return node;
+  }
 }
 class Node {
   constructor(value) {
@@ -68,10 +80,15 @@ class Node {
 }
 
 const list = new LinkedList();
-console.log(list.tail());
-list.append('a');
-console.log(list.tail());
-list.append('b');
-list.append('c');
+list.append("a");
+list.append("b");
+list.append("c");
 list.toString();
-console.log(list.tail());
+console.log('1:');
+console.log(list.at(1));
+console.log('0:');
+console.log(list.at(0));
+console.log('3:');
+console.log(list.at(3));
+console.log('-1:');
+console.log(list.at(-1));
