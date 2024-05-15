@@ -2,6 +2,7 @@ class LinkedList {
   constructor() {
     this.root = null;
   }
+
   toString() {
     let string = ` ( ${this.root?.value ?? "null"} )`;
     let node = this.root;
@@ -11,6 +12,7 @@ class LinkedList {
     }
     console.log(string);
   }
+
   append(value) {
     console.log(`appending ${value}`);
     if (this.root === null) {
@@ -26,6 +28,7 @@ class LinkedList {
       }
     }
   }
+
   prepend(value) {
     if (this.root === null) {
       this.root = new Node(value);
@@ -35,6 +38,7 @@ class LinkedList {
       this.root.next = node;
     }
   }
+
   size() {
     if (this.root === null) return 0;
     else {
@@ -47,9 +51,11 @@ class LinkedList {
       return size;
     }
   }
+
   head() {
     return this.root;
   }
+
   tail() {
     let node = this.root;
     if (!node) return null;
@@ -58,6 +64,7 @@ class LinkedList {
     }
     return node;
   }
+
   at(index) {
     if (index < 0) return null;
     let i = 0;
@@ -71,7 +78,9 @@ class LinkedList {
     }
     return node;
   }
-  pop() { // remove last element and returns it
+
+  // remove last element and returns it
+  pop() {
     if (!this.root) return null;
     if (this.size() === 1) {
       const node = this.root;
@@ -87,6 +96,15 @@ class LinkedList {
     return nodeToPop;
   }
 
+  // return true if value in list, otherwise return false
+  contains(value) {
+    if (!this.root) return false;
+    let node = this.root;
+    while (node) {
+      if (node.value === value) return true;
+      node = node.next
+    }
+  }
 }
 class Node {
   constructor(value) {
@@ -99,6 +117,6 @@ const list = new LinkedList();
 list.append("a");
 list.append("b");
 list.append("c");
-list.toString();
-console.log(list.pop());
-list.toString();
+console.log(`list ${list.contains('a') ? 'contains' : 'does not contain'} a`);
+console.log(`list ${list.contains('b') ? 'contains' : 'does not contain'} b`);
+console.log(`list ${list.contains('x') ? 'contains' : 'does not contain'} x`);
