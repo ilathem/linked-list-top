@@ -71,6 +71,22 @@ class LinkedList {
     }
     return node;
   }
+  pop() { // remove last element and returns it
+    if (!this.root) return null;
+    if (this.size() === 1) {
+      const node = this.root;
+      this.root = null;
+      return node;
+    }
+    let node = this.root;
+    while (node.next.next) {
+      node = node.next;
+    }
+    const nodeToPop = node.next;
+    node.next = null;
+    return nodeToPop;
+  }
+
 }
 class Node {
   constructor(value) {
@@ -84,11 +100,5 @@ list.append("a");
 list.append("b");
 list.append("c");
 list.toString();
-console.log('1:');
-console.log(list.at(1));
-console.log('0:');
-console.log(list.at(0));
-console.log('3:');
-console.log(list.at(3));
-console.log('-1:');
-console.log(list.at(-1));
+console.log(list.pop());
+list.toString();
