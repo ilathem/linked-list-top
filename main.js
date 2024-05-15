@@ -27,16 +27,15 @@ class LinkedList {
       }
     }
   }
-  // prepend(value) {
-  //   if (this.root === null) {
-  //     this.root = new Node(value);
-  //   } else {
-  //     let node = this.root;
-  //     this.root = new Node(value)
-  //     this.root.next = node;
-  //     while (node.next) {
-        
-      
+  prepend(value) {
+    if (this.root === null) {
+      this.root = new Node(value);
+    } else {
+      let node = this.root;
+      this.root = new Node(value)
+      this.root.next = node;
+    } 
+  }
 }
 class Node {
   constructor(value) {
@@ -47,7 +46,7 @@ class Node {
 
 const list = new LinkedList();
 list.append('a');
-// list.append('b');
-// list.append('c');
-// list.prepend('d');
+list.append('b');
+list.append('c');
+list.prepend('d');
 list.toString();
