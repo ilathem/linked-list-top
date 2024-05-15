@@ -14,7 +14,6 @@ class LinkedList {
   }
 
   append(value) {
-    console.log(`appending ${value}`);
     if (this.root === null) {
       this.root = new Node(value);
     } else {
@@ -122,8 +121,14 @@ class LinkedList {
   // insertAt(value, index) that inserts a new node with the
   // provided value at the given index.
   insertAt(value, index) {
-    if (index < 0) return null;
-    if (index === 0) this.prepend(value);
+    if (index < 0) {
+      console.error("Cannot inset at negative indices");
+      return false;
+    }
+    if (index === 0) {
+      this.prepend(value);
+      return true;
+    }
     let i = 1;
     let node = this.root;
     while (node.next) {
@@ -132,19 +137,18 @@ class LinkedList {
         const newNode = new Node(value);
         node.next = newNode;
         newNode.next = oldNode;
-        return;
+        return true;
       }
       node = node.next;
       i++;
     }
-    console.log(index, i);
     if (index === i) {
       this.append(value);
+      return true;
     } else {
-      return null;
+      console.error("Cannot insert past list bounds");
+      return false;
     }
-    console.log(node);
-    console.log(i);
   }
 }
 
@@ -153,25 +157,54 @@ class Node {
     this.value = value;
     this.next = null;
   }
-
-  method() {
-
-  }
 }
 
-const list = new LinkedList();
-list.append("a");
-list.append("b");
-list.append("c");
+const createAList = () => {
+  const list = new LinkedList();
+  list.append("a");
+  list.append("b");
+  list.append("c");
+  return list;
+};
 
+let list = createAList();
+console.log("");
+console.log("inserting x at 0");
+list.toString();
+list.insertAt("x", 0);
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("inserting x at 1");
+list.toString();
+list.insertAt("x", 1);
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("inserting x at 2");
+list.toString();
+list.insertAt("x", 2);
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("inserting x at 3");
+list.toString();
+list.insertAt("x", 3);
+list.toString();
+
+list = createAList();
+console.log("");
+console.log("inserting x at 4");
 list.toString();
 list.insertAt("x", 4);
 list.toString();
 
+list = createAList();
+console.log("");
+console.log("inserting x at -1");
 list.toString();
-list.insertAt("x", 4);
-list.toString();
-
-list.toString();
-list.insertAt("x", 4);
+list.insertAt("x", -1);
 list.toString();
