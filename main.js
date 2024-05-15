@@ -153,12 +153,25 @@ class Node {
     this.value = value;
     this.next = null;
   }
+
+  method() {
+   
+  }
 }
 
 const list = new LinkedList();
 list.append("a");
 list.append("b");
 list.append("c");
+
+list.toString();
+list.insertAt("x", 4);
+list.toString();
+
+list.toString();
+list.insertAt("x", 4);
+list.toString();
+
 list.toString();
 list.insertAt("x", 4);
 list.toString();
