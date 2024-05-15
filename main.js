@@ -119,8 +119,35 @@ class LinkedList {
     return null;
   }
 
-
+  // insertAt(value, index) that inserts a new node with the
+  // provided value at the given index.
+  insertAt(value, index) {
+    if (index < 0) return null;
+    if (index === 0) this.prepend(value);
+    let i = 1;
+    let node = this.root;
+    while (node.next) {
+      if (index === i) {
+        const oldNode = node.next;
+        const newNode = new Node(value);
+        node.next = newNode;
+        newNode.next = oldNode;
+        return;
+      }
+      node = node.next;
+      i++;
+    }
+    console.log(index, i);
+    if (index === i) {
+      this.append(value);
+    } else {
+      return null;
+    }
+    console.log(node);
+    console.log(i);
+  }
 }
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -132,6 +159,6 @@ const list = new LinkedList();
 list.append("a");
 list.append("b");
 list.append("c");
-console.log(list.find('a'))
-console.log(list.find('b'))
-console.log(list.find('x'))
+list.toString();
+list.insertAt("x", 4);
+list.toString();
