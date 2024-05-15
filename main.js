@@ -3,7 +3,7 @@ class LinkedList {
     this.root = null;
   }
   toString() {
-    let string = ` ( ${this.root.value} )`;
+    let string = ` ( ${this.root?.value ?? 'null'} )`;
     let node = this.root;
     while (node) {
       string += ` -> ( ${node.next?.value ?? 'null'} )`; // optional chaining!
@@ -27,7 +27,7 @@ class LinkedList {
       }
     }
   }
-  // preprend(value) {
+  // prepend(value) {
   //   if (this.root === null) {
   //     this.root = new Node(value);
   //   } else {
@@ -35,7 +35,7 @@ class LinkedList {
   //     this.root = new Node(value)
   //     this.root.next = node;
   //     while (node.next) {
-  //       
+        
       
 }
 class Node {
@@ -47,6 +47,7 @@ class Node {
 
 const list = new LinkedList();
 list.append('a');
-list.append('b');
-list.append('c');
+// list.append('b');
+// list.append('c');
+// list.prepend('d');
 list.toString();
