@@ -154,6 +154,9 @@ class Node {
     this.next = null;
   }
 
+  method() {
+
+  }
 }
 
 const list = new LinkedList();
